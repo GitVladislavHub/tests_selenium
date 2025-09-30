@@ -3,7 +3,7 @@ from selenium import webdriver
 
 
 @pytest.fixture()
-def open_browser():
+def browser():
     driver = webdriver.Chrome()
     yield driver
     driver.quit()
