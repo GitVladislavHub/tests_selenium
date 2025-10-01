@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 STEAM_GLOBAL_LINK = "https://store.steampowered.com/"
-EMAIL_INPUT_KEYBOARD = By.XPATH, '(//input[@type="text"])[2]'  # исправить
+EMAIL_INPUT_KEYBOARD = By.XPATH, '(//input[@type="text"])[2]'
 PASSWORD_INPUT_KEYBOARD = By.XPATH, '//input[contains(@type, "password")]'
 LOGIN_LINK = By.XPATH, "//a[contains(@class, 'global_action_link')]"
 TIMEOUT = 12
