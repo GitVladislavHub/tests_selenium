@@ -11,7 +11,7 @@ BUTTON_LOGIN = '//button[contains(@type, "submit") and contains(text(), "Вой�
 CAROUSEL_ITEMS = By.XPATH, "//div[@aria-label='ИЗБРАННЫЕ ПРЕДЛОЖЕНИЯ']"
 CREATE_ACCOUNT = By.XPATH, '//a[contains(@class, "login_create_btn btn_blue_steamui btn_medium")]'
 TEXT_WARNING = By.XPATH, "//div[contains(text(), 'проверьте свой пароль и имя аккаунта')]"
-LOADING_BUTTON = By.XPATH, "//button[@type='submit' and @disabled]"
+LOADING_BUTTON = By.XPATH, '//button[@type="submit" and @disabled]/div[1]/div[1]'
 
 
 def test_login(browser, random_email, random_password):
@@ -36,7 +36,7 @@ def test_login(browser, random_email, random_password):
 
     loading_element = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(LOADING_BUTTON))
 
-    assert loading_element.is_displayed(), "Значок загрузки не появился"
+    assert loading_element.is_enabled(), "Значок загрузки не появился"
 
     text_error = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(TEXT_WARNING))
 
