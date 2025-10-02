@@ -1,5 +1,3 @@
-import time
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -14,6 +12,7 @@ CAROUSEL_ITEMS = By.XPATH, "//div[@aria-label='ИЗБРАННЫЕ ПРЕДЛОЖ
 CREATE_ACCOUNT = By.XPATH, '//a[contains(@class, "login_create_btn btn_blue_steamui btn_medium")]'
 TEXT_WARNING = By.XPATH, "//div[contains(text(), 'проверьте свой пароль и имя аккаунта')]"
 LOADING_BUTTON = By.XPATH, "//button[@type='submit' and @disabled]"
+
 
 def test_login(browser, random_email, random_password):
     browser.get(STEAM_GLOBAL_LINK)
@@ -42,4 +41,3 @@ def test_login(browser, random_email, random_password):
     text_error = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(TEXT_WARNING))
 
     assert text_error.is_enabled(), "Текст предупреждения не появился"
-

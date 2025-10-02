@@ -2,7 +2,9 @@ from faker import Faker
 
 import pytest
 from selenium import webdriver
+
 fake = Faker()
+
 
 @pytest.fixture()
 def browser():
