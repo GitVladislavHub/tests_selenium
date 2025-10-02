@@ -43,4 +43,3 @@ def test_login(browser, random_email, random_password):
 
     assert text_error.is_enabled(), "Текст предупреждения не появился"
 
-    time.sleep(2)
