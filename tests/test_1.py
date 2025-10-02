@@ -13,13 +13,13 @@ BUTTON_LOGIN = '//button[contains(@type, "submit") and contains(text(), "Вой�
 CAROUSEL_ITEMS = By.XPATH, "//div[@aria-label='ИЗБРАННЫЕ ПРЕДЛОЖЕНИЯ']"
 CREATE_ACCOUNT = By.XPATH, '//a[contains(@class, "login_create_btn btn_blue_steamui btn_medium")]'
 TEXT_WARNING = By.XPATH, "//div[contains(text(), 'проверьте свой пароль и имя аккаунта')]"
-
+LOADING_BUTTON = By.XPATH, "//button[@type='submit' and @disabled]"
 
 def test_login(browser, random_email, random_password):
     browser.get(STEAM_GLOBAL_LINK)
     home_page = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(CAROUSEL_ITEMS))
 
-    assert home_page.is_displayed(), "Главная страница еще не загрузилась"
+    assert home_page.is_enabled(), "Главная страница еще не загрузилась"
 
     click_button = WebDriverWait(browser, TIMEOUT).until(EC.element_to_be_clickable(LOGIN_LINK))
     click_button.click()
@@ -35,10 +35,12 @@ def test_login(browser, random_email, random_password):
     button_login = browser.find_element(By.XPATH, BUTTON_LOGIN)
     button_login.click()
 
+    loading_element = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(LOADING_BUTTON))
 
+    assert loading_element.is_displayed(), "Значок загрузки не появился"
 
     text_error = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(TEXT_WARNING))
 
-    assert text_error.is_displayed(), "Текст предупреждения не появился"
+    assert text_error.is_enabled(), "Текст предупреждения не появился"
 
     time.sleep(2)
