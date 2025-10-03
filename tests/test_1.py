@@ -25,14 +25,10 @@ def test_login(browser, random_email, random_password):
     click_button = WebDriverWait(browser, TIMEOUT).until(EC.element_to_be_clickable(LOGIN_LINK))
     click_button.click()
 
-    login_page = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(EMAIL_INPUT_KEYBOARD))
-
-    assert login_page.is_displayed(), "Ошибочка: открылась другая страница."
-
-    input_email = WebDriverWait(browser, TIMEOUT).until(EC.element_to_be_clickable(EMAIL_INPUT_KEYBOARD))
+    input_email = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(EMAIL_INPUT_KEYBOARD))
     input_email.send_keys(random_email)
 
-    input_password = WebDriverWait(browser, TIMEOUT).until(EC.element_to_be_clickable(PASSWORD_INPUT_KEYBOARD))
+    input_password = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(PASSWORD_INPUT_KEYBOARD))
     input_password.send_keys(random_password)
 
     button_login = WebDriverWait(browser, TIMEOUT).until(EC.element_to_be_clickable((By.XPATH, BUTTON_LOGIN)))
@@ -44,4 +40,6 @@ def test_login(browser, random_email, random_password):
 
     warning_error = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(WARNING))
 
-    assert warning_error.text in 'Пожалуйста, проверьте свой пароль и имя аккаунта и попробуйте снова.', "Не тот текст"
+    actual_error = "Пожалуйста, проверьте свой пароль и имя аккаунта и попробуйте снова."
+
+    assert warning_error.text in "Пожалуйста, проверьте свой пароль и имя аккаунта и попробуйте снова.", f"Ожидали: {warning_error}, а получили: {actual_error}"
