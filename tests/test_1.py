@@ -35,7 +35,7 @@ def test_login(browser, random_email, random_password):
     input_password = WebDriverWait(browser, TIMEOUT).until(EC.element_to_be_clickable(PASSWORD_INPUT_KEYBOARD))
     input_password.send_keys(random_password)
 
-    button_login = browser.find_element(By.XPATH, BUTTON_LOGIN)
+    button_login = WebDriverWait(browser, TIMEOUT).until(EC.element_to_be_clickable((By.XPATH, BUTTON_LOGIN)))
     button_login.click()
 
     loading_element = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(LOADING_BUTTON))
