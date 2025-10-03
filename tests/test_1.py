@@ -8,9 +8,11 @@ PASSWORD_INPUT_KEYBOARD = By.XPATH, '//input[contains(@type, "password")]'
 LOGIN_LINK = By.XPATH, "//a[contains(@class, 'global_action_link')]"
 TIMEOUT = 12
 BUTTON_LOGIN = '//button[contains(@type, "submit") and contains(text(), "Войти")]'
-CAROUSEL_ITEMS = By.XPATH, "//div[@aria-label='ИЗБРАННЫЕ ПРЕДЛОЖЕНИЯ']"
-CREATE_ACCOUNT = By.XPATH, '//a[contains(@class, "login_create_btn btn_blue_steamui btn_medium")]'
-TEXT_WARNING = By.XPATH, "//div[contains(text(), 'проверьте свой пароль и имя аккаунта')]"
+CAROUSEL_ITEMS = By.XPATH, ("//div[contains(@class,'carousel_items') and contains(@class,'store_capsule_container') "
+                            "and contains(@class,'responsive_scroll_snap_ctn') and contains(@class,'hero_row')]")
+CREATE_ACCOUNT = By.XPATH, ("//a[contains(@class,'login_create_btn') and contains(@class,'btn_blue_steamui') "
+                            "and contains(@class,'btn_medium')]")
+WARNING = By.XPATH, "//form[.//input[contains(@type,'password')]]//a[contains(@href,'HelpWithLogin')]/preceding-sibling::div[1]"
 LOADING_BUTTON = By.XPATH, '//button[@type="submit" and @disabled]/div[1]/div[1]'
 
 
@@ -23,7 +25,9 @@ def test_login(browser, random_email, random_password):
     click_button = WebDriverWait(browser, TIMEOUT).until(EC.element_to_be_clickable(LOGIN_LINK))
     click_button.click()
 
-    assert "/login" in browser.current_url, "Ошибка: не та страница!"
+    login_page = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(EMAIL_INPUT_KEYBOARD))
+
+    assert login_page.is_displayed(), "Ошибочка: открылась другая страница."
 
     input_email = WebDriverWait(browser, TIMEOUT).until(EC.element_to_be_clickable(EMAIL_INPUT_KEYBOARD))
     input_email.send_keys(random_email)
@@ -38,6 +42,6 @@ def test_login(browser, random_email, random_password):
 
     assert loading_element.is_enabled(), "Значок загрузки не появился"
 
-    text_error = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(TEXT_WARNING))
+    warning_error = WebDriverWait(browser, TIMEOUT).until(EC.visibility_of_element_located(WARNING))
 
-    assert text_error.is_enabled(), "Текст предупреждения не появился"
+    assert warning_error.text in 'Пожалуйста, проверьте свой пароль и имя аккаунта и попробуйте снова.', "Не тот текст"
