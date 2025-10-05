@@ -26,6 +26,7 @@ class Browser:
             except Exception:
                 pass
         options = Options()
+        options.add_argument("window-size=1920,1080")
         options.add_experimental_option("prefs", {"intl.accept_languages": lang})
         self._driver = webdriver.Chrome(options=options)
         self._lang = lang
