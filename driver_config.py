@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from enums import Language
+
 
 class Browser:
     _instance = None
@@ -12,10 +14,10 @@ class Browser:
             cls._instance = super().__new__(cls)
         return cls._instance
 
-    def get(self, lang: str = "ru"):
-        """Создаёт ChromeDriver, если его ещё нет (или язык поменялся)."""
-        if self._driver is None or self._lang != lang:
-            self._create_driver(lang)
+    def get(self, lang: Language = Language.RU):
+        lang_value = lang.value
+        if self._driver is None or self._lang != lang_value:
+            self._create_driver(lang_value)
         return self._driver
 
     def _create_driver(self, lang: str):
@@ -25,6 +27,7 @@ class Browser:
                 self._driver.quit()
             except Exception:
                 pass
+
         options = Options()
         options.add_argument("window-size=1920,1080")
         options.add_experimental_option("prefs", {"intl.accept_languages": lang})

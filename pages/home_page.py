@@ -1,24 +1,35 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 
-from pages.base_page import BasePage, TIMEOUT_2
+from pages.base_page import BasePage
+from config_reader import get_config
+
+config = get_config()
 
 
 class HomePage(BasePage):
-    CAROUSEL_ITEMS = By.XPATH, (
-        "//div[contains(@class,'carousel_items') and contains(@class,'store_capsule_container') "
-        "and contains(@class,'responsive_scroll_snap_ctn') and contains(@class,'hero_row')]")
+    URL = config.BASE_STEAM
+    SEARCH_LOCATOR = (By.XPATH, "//input[contains(@type, 'text') and contains(@role, 'combobox')]")
+    SEARCH_BUTTON = (By.XPATH, "//form[contains(@role, 'search')]//button[contains(@type, 'submit')]")
+    CAROUSEL_ITEMS = (By.XPATH,
+                      "//div[contains(@class,'carousel_items') and "
+                      "contains(@class,'store_capsule_container') and "
+                      "contains(@class,'responsive_scroll_snap_ctn') and "
+                      "contains(@class,'hero_row')]"
+                      )
 
-    def visible_el_home_page_steam(self):
-        return self.visible_unique_element(self.CAROUSEL_ITEMS)
-
-    def input_game_name(self, game_name):
-        self.input_text_steam(self.SEARCH_LOCATOR, game_name)
+    def check_page(self):
+        self.visible_unique_element(self.CAROUSEL_ITEMS)
         return self
 
-    def click_button(self, game_name):
-        WebDriverWait(self.driver, TIMEOUT_2).until(
-            EC.text_to_be_present_in_element_value(self.SEARCH_LOCATOR, game_name))
-        self.search_button(self.SEARCH_BUTTON)
+    def input_game_name(self, game_name):
+        element = self.wait.until(
+            EC.visibility_of_element_located(self.SEARCH_LOCATOR))
+        element.send_keys(game_name)
+        return self
+
+    def click_search_button(self, game_name):
+        self.wait.until(EC.text_to_be_present_in_element_value(self.SEARCH_LOCATOR, game_name))
+        button = self.wait.until(EC.element_to_be_clickable(self.SEARCH_BUTTON))
+        button.click()
         return self
