@@ -1,10 +1,18 @@
 import json
-from functools import lru_cache
 from pathlib import Path
 
 
 class ConfigReader:
+    _instance = None
     CONFIG_PATH = Path(__file__).parent / "config.json"
+    WAIT_DEFAULT = 10
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            with open(cls.CONFIG_PATH, "r", encoding="utf-8") as f:
+                cls._instance._data = json.load(f)
+        return cls._instance
 
     def __init__(self, path: Path = CONFIG_PATH):
         with open(path, "r", encoding="utf-8") as f:
@@ -23,15 +31,6 @@ class ConfigReader:
         return self._data.get("browser", {})
 
     @property
-    def WAIT_DEFAULT(self) -> int:
-        return int(self.timeouts.get("wait_default", 10))
-
-    @property
-    def BASE_STEAM(self):
+    def base_steam(self):
         return self.base_urls.get("steam", "https://store.steampowered.com/")
 
-
-@lru_cache(maxsize=1)
-def get_config() -> ConfigReader:
-    """чтобы не читать файл каждый раз заново"""
-    return ConfigReader()

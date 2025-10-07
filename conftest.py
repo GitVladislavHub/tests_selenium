@@ -1,9 +1,12 @@
 from faker import Faker
 import pytest
+
+from config_reader import ConfigReader
 from enums import Language
 from driver_config import Browser
 
 fake = Faker()
+config = ConfigReader()
 
 
 @pytest.fixture()
@@ -17,13 +20,13 @@ def random_password():
 
 
 @pytest.fixture(params=[Language.RU, Language.EN], scope="function")
-def lang(request) -> Language:
+def lang(request):
     return request.param
 
 
 @pytest.fixture(scope="function")
-def driver(lang: Language):
+def driver(lang):
     browser = Browser()
-    drv = browser.get(lang)
+    drv = browser.get(url=config.base_steam, lang=lang)
     yield drv
     browser.quit()
