@@ -13,7 +13,7 @@ class HomePage(BasePage):
     SEARCH_LOCATOR = (By.XPATH, "//input[contains(@type, 'text') and contains(@role, 'combobox')]")
     SEARCH_BUTTON = (By.XPATH, "//form[contains(@role, 'search')]//button[contains(@type, 'submit')]")
 
-    def wait_check_page(self) -> bool:
+    def is_check_page(self) -> bool:
         try:
             self.wait.until(EC.visibility_of_element_located(self.SEARCH_BUTTON))
             return True
@@ -26,7 +26,7 @@ class HomePage(BasePage):
         element.send_keys(game_name)
         return self
 
-    def click_search_button(self, game_name):
+    def search_game(self, game_name):
         self.wait.until(EC.text_to_be_present_in_element_value(self.SEARCH_LOCATOR, game_name))
         button = self.wait.until(EC.element_to_be_clickable(self.SEARCH_BUTTON))
         button.click()

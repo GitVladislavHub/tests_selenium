@@ -7,13 +7,6 @@ class ConfigReader:
     CONFIG_PATH = Path(__file__).parent / "config.json"
     WAIT_DEFAULT = 10
 
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-            with open(cls.CONFIG_PATH, "r", encoding="utf-8") as f:
-                cls._instance._data = json.load(f)
-        return cls._instance
-
     def __init__(self, path: Path = CONFIG_PATH):
         with open(path, "r", encoding="utf-8") as f:
             self._data = json.load(f)
