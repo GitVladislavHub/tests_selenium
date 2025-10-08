@@ -40,12 +40,6 @@ class Browser:
         self._lang = lang
 
     def quit(self):
-        if self._driver:
-            try:
-                self._driver.quit()
-            except WebDriverException as e :
-                (print(f"Ошибка при закрытии браузера! Возможно, он уже завершён {e}"))
-            pass
         self._driver = None
         self._lang = None
         Browser._instance = None

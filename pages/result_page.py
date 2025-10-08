@@ -1,4 +1,3 @@
-from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -10,15 +9,16 @@ class ResultPage(BasePage):
     DECREASING_ELEMENT = (By.XPATH, "//*[contains(@id, 'sort_by_droplist')]//a[contains(@id, 'Price_DESC')]")
 
     def wait_success_open_page(self):
-        try:
-            self.wait.until(EC.visibility_of_element_located(self.FILTER_BUTTON))
-            return True
-        except TimeoutException:
-            return False
+        self.wait.until(EC.visibility_of_element_located(self.FILTER_BUTTON))
+        return True
 
     def filter_button(self):
-        self.click(self.FILTER_BUTTON)
+        self.wait.until(EC.visibility_of_element_located(self.FILTER_BUTTON))
+        f_button = self.wait.until(EC.element_to_be_clickable(self.FILTER_BUTTON))
+        f_button.click()
 
     def reduce_the_price(self):
-        self.wait.until(EC.element_to_be_clickable(self.DECREASING_ELEMENT))
-        self.click(self.DECREASING_ELEMENT)
+        self.wait.until(EC.visibility_of_element_located(self.DECREASING_ELEMENT))
+        r_price = self.wait.until(EC.element_to_be_clickable(self.DECREASING_ELEMENT))
+        r_price.click()
+        return self

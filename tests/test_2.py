@@ -10,7 +10,7 @@ config = ConfigReader()
 @pytest.mark.parametrize("game_name", ["Fallout", "The Witcher"])
 def test_filter_games(driver, game_name):
     main_page = HomePage(driver, timeout=config.WAIT_DEFAULT)
-    main_page.open()
+    main_page.open_page(config.base_steam)
     res_page = ResultPage(driver, timeout=config.WAIT_DEFAULT)
 
     main_page.is_check_page()
