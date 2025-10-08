@@ -21,4 +21,3 @@ class ResultPage(BasePage):
         self.wait.until(EC.visibility_of_element_located(self.DECREASING_ELEMENT))
         r_price = self.wait.until(EC.element_to_be_clickable(self.DECREASING_ELEMENT))
         r_price.click()
-        return self
