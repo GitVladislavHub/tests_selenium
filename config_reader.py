@@ -13,15 +13,15 @@ class ConfigReader:
 
     @property
     def base_urls(self) -> dict:
-        return self._data.get("base_urls", {})
+        return self._data.get("base_urls")
 
     @property
     def timeouts(self) -> dict:
-        return self._data.get("timeouts", {})
+        return self._data.get("timeouts")
 
     @property
     def browser(self) -> dict:
-        return self._data.get("browser", {})
+        return self._data.get("browser")
 
     @property
     def base_steam(self):

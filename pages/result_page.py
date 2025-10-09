@@ -9,15 +9,12 @@ class ResultPage(BasePage):
     DECREASING_ELEMENT = (By.XPATH, "//*[contains(@id, 'sort_by_droplist')]//a[contains(@id, 'Price_DESC')]")
 
     def wait_success_open_page(self):
-        self.wait.until(EC.visibility_of_element_located(self.FILTER_BUTTON))
-        return True
+        return self.wait.until(EC.visibility_of_element_located(self.FILTER_BUTTON))
 
     def filter_button(self):
-        self.wait.until(EC.visibility_of_element_located(self.FILTER_BUTTON))
         f_button = self.wait.until(EC.element_to_be_clickable(self.FILTER_BUTTON))
         f_button.click()
 
     def reduce_the_price(self):
-        self.wait.until(EC.visibility_of_element_located(self.DECREASING_ELEMENT))
         r_price = self.wait.until(EC.element_to_be_clickable(self.DECREASING_ELEMENT))
         r_price.click()

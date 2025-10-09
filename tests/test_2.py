@@ -13,11 +13,12 @@ def test_filter_games(driver, game_name):
     main_page.open_page(config.base_steam)
     res_page = ResultPage(driver, timeout=config.WAIT_DEFAULT)
 
-    main_page.is_check_page()
+    main_page.open_page(config.base_steam)
 
-    assert main_page.is_check_page(), "Главная страница еще не загрузилась"
+    assert main_page.open_page(config.base_steam), "Главная страница еще не загрузилась"
 
-    main_page.input_game_name(game_name).search_game(game_name)
+    main_page.input_game_name(game_name)
+    main_page.search_game()
 
     assert res_page.wait_success_open_page(), "Страница с результатами не открылась"
 
