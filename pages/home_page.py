@@ -8,7 +8,6 @@ config = ConfigReader()
 
 
 class HomePage(BasePage):
-    URL = config.base_urls["steam"]
     SEARCH_LOCATOR = (By.XPATH, "//input[contains(@type, 'text') and contains(@role, 'combobox')]")
     SEARCH_BUTTON = (By.XPATH, "//form[contains(@role, 'search')]//button[contains(@type, 'submit')]")
 
