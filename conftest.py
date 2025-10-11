@@ -27,6 +27,6 @@ def lang(request):
 @pytest.fixture(scope="function")
 def driver(lang):
     browser = Browser()
-    drv = browser.get(url=config.base_steam, lang=lang)
+    drv = browser.get(url=config.base_urls["steam"], lang=lang)
     yield drv
     browser.quit()

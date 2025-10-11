@@ -8,14 +8,12 @@ config = ConfigReader()
 
 
 class HomePage(BasePage):
-    URL = config.base_steam
+    URL = config.base_urls["steam"]
     SEARCH_LOCATOR = (By.XPATH, "//input[contains(@type, 'text') and contains(@role, 'combobox')]")
     SEARCH_BUTTON = (By.XPATH, "//form[contains(@role, 'search')]//button[contains(@type, 'submit')]")
 
-    def open_page(self, url):
-        self.wait.until(EC.visibility_of_element_located(self.SEARCH_LOCATOR))
-        self.url = url
-        return self
+    def is_success_open_page(self):
+        return self.wait.until(EC.visibility_of_element_located(self.SEARCH_LOCATOR))
 
     def input_game_name(self, game_name):
         element = self.wait.until(
@@ -26,3 +24,4 @@ class HomePage(BasePage):
     def search_game(self):
         button = self.wait.until(EC.element_to_be_clickable(self.SEARCH_BUTTON))
         button.click()
+        return self

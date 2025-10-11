@@ -6,7 +6,6 @@
     "wait_default": 10
   },
   "browser": {
-    "headless": false,
     "window_size": "1920,1080"
   }
 }

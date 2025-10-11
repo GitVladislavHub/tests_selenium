@@ -6,8 +6,6 @@ config = ConfigReader()
 
 
 class BasePage:
-    url = config.base_steam
-
-    def __init__(self, driver, timeout: int):
+    def __init__(self, driver, timeout):
         self.driver = driver
-        self.wait = WebDriverWait(driver, timeout or config.WAIT_DEFAULT)
+        self.wait = WebDriverWait(driver, timeout or config.timeouts["wait_default"])
