@@ -22,9 +22,14 @@ def test_filter_games(driver, game_name, limit_prices):
     assert res_page.wait_success_open_page(), "Страница с результатами не открылась"
 
     res_page.filter_button()
+
     res_page.reduce_the_price()
 
     res_page.wait_until_results_updated()
-    res_page.games_filter(limit_prices)
 
-    #assert
+    prices = res_page.give_me_prices(limit_prices)
+    assert prices == sorted(prices, reverse=True), (
+        f"Сортировка по убыванию неверна!.\n"
+        f"Фактические цены: {prices}\n"
+        f"Ожидалось: {sorted(prices, reverse=True)}"
+    )
