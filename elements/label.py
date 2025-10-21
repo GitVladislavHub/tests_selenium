@@ -1,5 +1,5 @@
 from elements.base_element import BaseElement
 
 
-class Button(BaseElement):
-    pass
+class Label(BaseElement):
+    browser = None

@@ -1,6 +1,6 @@
 {
   "base_urls": {
-    "1_basic_auth": "https://the-internet.herokuapp.com/basic_auth",
+    "1_basic_auth": "http://admin:admin@localhost:7080/basic_auth",
     "2_java_script_alerts": "https://the-internet.herokuapp.com/javascript_alerts",
     "4_alerts_context": "https://the-internet.herokuapp.com/context_menu",
     "5_actions": "https://the-internet.herokuapp.com/horizontal_slider",
@@ -16,9 +16,5 @@
   },
   "browser": {
     "window_size": "1920,1080"
-  },
-  "basic_auth": {
-    "user": "admin",
-    "password": "admin"
   }
 }

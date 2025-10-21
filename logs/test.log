@@ -1,0 +1,99 @@
+[2025-10-21 18:51:33,300 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: switch to alert
+[2025-10-21 18:51:33,301 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: wait alert present
+[2025-10-21 18:51:33,302 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: accept alert
+[2025-10-21 18:51:33,302 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: switch to alert
+[2025-10-21 18:51:33,302 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: wait alert present
+[2025-10-21 18:51:33,304 - INFO] - Label[text]: wait for visibility_of_element_located
+[2025-10-21 18:51:33,313 - INFO] - Label[text]: wait for presence_of_element_located
+[2025-10-21 18:51:33,317 - INFO] - Label[text]: get text
+[2025-10-21 18:51:33,323 - INFO] - Label[text]: text = You successfully clicked an alert
+[2025-10-21 18:51:33,323 - INFO] - Button[button_for_js_confirm]: wait for visibility_of_element_located
+[2025-10-21 18:51:33,331 - INFO] - Button[button_for_js_confirm]: wait for element_to_be_clickable
+[2025-10-21 18:51:33,340 - INFO] - Button[button_for_js_confirm]: click
+[2025-10-21 18:51:33,363 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: wait alert present
+[2025-10-21 18:51:33,364 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: get alert text
+[2025-10-21 18:51:33,364 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: switch to alert
+[2025-10-21 18:51:33,364 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: wait alert present
+[2025-10-21 18:51:33,365 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: accept alert
+[2025-10-21 18:51:33,365 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: switch to alert
+[2025-10-21 18:51:33,365 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: wait alert present
+[2025-10-21 18:51:33,366 - INFO] - Label[text]: wait for visibility_of_element_located
+[2025-10-21 18:51:33,372 - INFO] - Label[text]: wait for presence_of_element_located
+[2025-10-21 18:51:33,375 - INFO] - Label[text]: get text
+[2025-10-21 18:51:33,394 - INFO] - Label[text]: text = You clicked: Ok
+[2025-10-21 18:51:33,394 - INFO] - Button[button_for_js_prompt]: wait for visibility_of_element_located
+[2025-10-21 18:51:33,402 - INFO] - Button[button_for_js_prompt]: wait for element_to_be_clickable
+[2025-10-21 18:51:33,412 - INFO] - Button[button_for_js_prompt]: click
+[2025-10-21 18:51:33,437 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: wait alert present
+[2025-10-21 18:51:33,437 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: get alert text
+[2025-10-21 18:51:33,437 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: switch to alert
+[2025-10-21 18:51:33,438 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: wait alert present
+[2025-10-21 18:51:33,439 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: send 'Artist.' to alert
+[2025-10-21 18:51:33,439 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: switch to alert
+[2025-10-21 18:51:33,439 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: wait alert present
+[2025-10-21 18:51:33,440 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: accept alert
+[2025-10-21 18:51:33,440 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: switch to alert
+[2025-10-21 18:51:33,440 - INFO] - Browser_57159840744baa5e102a9c77ea9129cd: wait alert present
+[2025-10-21 18:51:35,442 - INFO] - Label[text]: wait for visibility_of_element_located
+[2025-10-21 18:51:35,450 - INFO] - Label[text]: wait for presence_of_element_located
+[2025-10-21 18:51:35,452 - INFO] - Label[text]: get text
+[2025-10-21 18:51:35,456 - INFO] - Label[text]: text = You entered: Artist.
+[2025-10-21 18:52:12,405 - INFO] - Start webdriver 'chrome' with options '['--window-size=1920,1080']'
+[2025-10-21 18:52:13,651 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: get https://the-internet.herokuapp.com/javascript_alerts
+[2025-10-21 18:52:19,518 - INFO] - <pages.alert_page.AlertPage object at 0x0000028CA8972BA0> success open
+[2025-10-21 18:52:19,518 - INFO] - Label[unique_loc_element_page]: wait for visibility_of_element_located
+[2025-10-21 18:52:19,529 - INFO] - Button[button_for_js_alert]: wait for visibility_of_element_located
+[2025-10-21 18:52:19,537 - INFO] - Button[button_for_js_alert]: wait for element_to_be_clickable
+[2025-10-21 18:52:19,546 - INFO] - Button[button_for_js_alert]: click
+[2025-10-21 18:52:19,578 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:19,579 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: get alert text
+[2025-10-21 18:52:19,579 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: switch to alert
+[2025-10-21 18:52:19,579 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:19,580 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: accept alert
+[2025-10-21 18:52:19,580 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: switch to alert
+[2025-10-21 18:52:19,580 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:19,582 - INFO] - Button[button_for_js_alert]: wait for visibility_of_element_located
+[2025-10-21 18:52:19,591 - INFO] - Button[button_for_js_alert]: wait for element_to_be_clickable
+[2025-10-21 18:52:19,600 - INFO] - Button[button_for_js_alert]: click
+[2025-10-21 18:52:19,638 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:19,639 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: get alert text
+[2025-10-21 18:52:19,639 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: switch to alert
+[2025-10-21 18:52:19,639 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:19,640 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: accept alert
+[2025-10-21 18:52:19,640 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: switch to alert
+[2025-10-21 18:52:19,640 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:19,642 - INFO] - Label[text]: wait for visibility_of_element_located
+[2025-10-21 18:52:19,651 - INFO] - Label[text]: wait for presence_of_element_located
+[2025-10-21 18:52:19,655 - INFO] - Label[text]: get text
+[2025-10-21 18:52:19,661 - INFO] - Label[text]: text = You successfully clicked an alert
+[2025-10-21 18:52:19,661 - INFO] - Button[button_for_js_confirm]: wait for visibility_of_element_located
+[2025-10-21 18:52:19,670 - INFO] - Button[button_for_js_confirm]: wait for element_to_be_clickable
+[2025-10-21 18:52:19,678 - INFO] - Button[button_for_js_confirm]: click
+[2025-10-21 18:52:19,701 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:19,701 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: get alert text
+[2025-10-21 18:52:19,702 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: switch to alert
+[2025-10-21 18:52:19,702 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:19,702 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: accept alert
+[2025-10-21 18:52:19,702 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: switch to alert
+[2025-10-21 18:52:19,702 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:19,704 - INFO] - Label[text]: wait for visibility_of_element_located
+[2025-10-21 18:52:19,709 - INFO] - Label[text]: wait for presence_of_element_located
+[2025-10-21 18:52:19,712 - INFO] - Label[text]: get text
+[2025-10-21 18:52:19,715 - INFO] - Label[text]: text = You clicked: Ok
+[2025-10-21 18:52:21,716 - INFO] - Button[button_for_js_prompt]: wait for visibility_of_element_located
+[2025-10-21 18:52:21,724 - INFO] - Button[button_for_js_prompt]: wait for element_to_be_clickable
+[2025-10-21 18:52:21,733 - INFO] - Button[button_for_js_prompt]: click
+[2025-10-21 18:52:21,757 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:21,758 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: get alert text
+[2025-10-21 18:52:21,758 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: switch to alert
+[2025-10-21 18:52:21,758 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:21,760 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: send 'Company.' to alert
+[2025-10-21 18:52:21,760 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: switch to alert
+[2025-10-21 18:52:21,760 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:21,761 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: accept alert
+[2025-10-21 18:52:21,761 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: switch to alert
+[2025-10-21 18:52:21,761 - INFO] - Browser_a388dfcbfaa637d6b4eea851a3fe490f: wait alert present
+[2025-10-21 18:52:23,763 - INFO] - Label[text]: wait for visibility_of_element_located
+[2025-10-21 18:52:23,770 - INFO] - Label[text]: wait for presence_of_element_located
+[2025-10-21 18:52:23,773 - INFO] - Label[text]: get text
+[2025-10-21 18:52:23,776 - INFO] - Label[text]: text = You entered: Company.
