@@ -10,3 +10,8 @@ __pycache__/
 venv/
 .env
 *.pyo
+*.log
+logs/
+var/log/
+*.tmp
+*.temp

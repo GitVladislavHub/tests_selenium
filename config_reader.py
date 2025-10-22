@@ -13,3 +13,7 @@ class ConfigReader:
     @property
     def base_urls(self):
         return self._data["base_urls"]
+
+    @property
+    def pc_window_size(self):
+        return self._data["pc_window_size"]

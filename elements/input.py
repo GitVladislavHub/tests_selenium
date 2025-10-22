@@ -24,7 +24,7 @@ class Input(BaseElement):
             self.clear()
 
         element = self.wait_for_visible()
-        Logger.info(f"{self}: send_keys = '{keys}'")
+        Logger.info(f"{self}: send_keys = {keys}")
         try:
             element.send_keys(keys)
         except WebDriverException as err:
@@ -37,4 +37,4 @@ class Input(BaseElement):
 
         element = self.wait_for_presence()
         Logger.info(f"{self}: js_send_keys = '{keys}'")
-        self.browser.execute_script("arguments[0].value = 'arguments[1]'", element, keys)
+        self.browser.execute_script("arguments[0].value = arguments[1]", element, keys)

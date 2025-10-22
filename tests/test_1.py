@@ -1,7 +1,3 @@
-import pytest
-from selenium.webdriver import Keys
-
-from logger.logger import Logger
 from pages.main_page_1 import MainLoginPage
 from config_reader import ConfigReader
 

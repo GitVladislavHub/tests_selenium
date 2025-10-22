@@ -13,8 +13,8 @@ class MainLoginPage(BasePage):
         self.loc_element = Label(browser, self.AUTH_LOC, description="authorization page")
 
     def login(self):
-        Logger.info("Logging in...")
-        self.loc_element.wait_for_visible()
-        Logger.info("Successfully logged in")
+        Logger.info("page opens...")
+        self.loc_element.wait_for_presence()
+        Logger.info("Successfully open page")
         text = self.loc_element.get_text()
         return text

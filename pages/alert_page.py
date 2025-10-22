@@ -1,41 +1,47 @@
 from elements.button import Button
+from elements.input import Input
 from elements.label import Label
 from pages.base_page import BasePage
 from logger.logger import Logger
-from faker import Faker
-
-fake = Faker()
 
 
 class AlertPage(BasePage):
-    AUTH_LOC = ("//button[contains(@onclick, 'jsPrompt') "
-                "or contains(@onclick, 'jsConfirm') "
-                "or contains(@onclick, 'jsAlert')]")
+    AUTH_LOC = "//button[contains(@onclick, 'jsPrompt')]"
     JS_ALERT_LOC = "//button[contains(@onclick, 'jsAlert()')]"
     JS_CONFIRM_LOC = "//button[contains(@onclick, 'jsConfirm()')]"
     JS_PROMPT_LOC = "//button[contains(@onclick, 'jsPrompt()')]"
     LOC_TEXT = "//p[contains(@id, 'result')]"
-    TEXT_FAKER = fake.text(max_nb_chars=10)
 
     def __init__(self, browser):
         super().__init__(browser)
-        self.page_name = "Alert_page_1"
+        self.page_name = "Alert_page_js"
 
-        self.unique_loc_element = Label(browser, self.AUTH_LOC, description="unique_loc_element_page")
+        self.authorization_loc = Label(browser, self.AUTH_LOC,
+                                       description="unique_loc_element_page")
 
-        self.js_alert_button = Button(browser, self.JS_ALERT_LOC, description="button_for_js_alert")
-        self.js_confirm_button = Button(browser, self.JS_CONFIRM_LOC, description="button_for_js_confirm")
-        self.js_promPt_button = Button(browser, self.JS_PROMPT_LOC, description="button_for_js_prompt")
+        self.alert_button = Button(browser, self.JS_ALERT_LOC,
+                                   description="Alert Page -> Click Alert Button -> JS Alert")
+        self.confirm_button = Button(browser, self.JS_CONFIRM_LOC,
+                                     description="Alert Page -> Click Confirm Button -> JS Alert")
+        self.promPt_button = Button(browser, self.JS_PROMPT_LOC,
+                                    description="Alert Page -> Click Prompt Button -> JS Alert")
 
-        self.unique_element_text = Label(browser, self.LOC_TEXT, description="text")
+        self.js_alert_button = Input(browser, self.JS_ALERT_LOC,
+                                     description="Alert Page -> Click Alert Button -> JS Alert")
+        self.js_confirm_button = Input(browser, self.JS_CONFIRM_LOC,
+                                     description="Alert Page -> Click Alert Button -> JS Alert")
+        self.js_promPt_button = Input(browser, self.JS_PROMPT_LOC,
+                                     description="Alert Page -> Click Alert Button -> JS Alert")
 
-    def success_open(self):
+        self.text_alert_page = Label(browser, self.LOC_TEXT, description="text")
+
+    def open_success_page(self):
         Logger.info(f"{self} success open")
-        self.unique_loc_element.wait_for_visible()
+        self.authorization_loc.wait_for_visible()
 
     def click_for_js_alert(self):
-        self.js_alert_button.wait_for_visible()
-        self.js_alert_button.click()
+        self.alert_button.wait_for_visible()
+        self.alert_button.click()
 
         self.browser.wait_alert_present()
         alert_text = self.browser.get_alert_text()
@@ -43,35 +49,56 @@ class AlertPage(BasePage):
         return alert_text
 
     def is_success_text(self):
-        self.unique_element_text.wait_for_visible()
-        result_text = self.unique_element_text.get_text()
+        self.text_alert_page.wait_for_visible()
+        result_text = self.text_alert_page.get_text()
         return result_text
 
     def click_for_js_confirm(self):
+        self.confirm_button.wait_for_visible()
+        self.confirm_button.click()
+
+        self.browser.wait_alert_present()
+        alert_text = self.browser.get_alert_text()
+        self.browser.accept_alert()
+        return alert_text
+
+    def click_for_js_prompt(self, text):
+        self.promPt_button.wait_for_visible()
+        self.promPt_button.click()
+
+        self.browser.wait_alert_present()
+        alert_text = self.browser.get_alert_text()
+
+        if text is not None:
+            self.browser.send_keys_alert(text)
+        self.browser.accept_alert()
+        return alert_text
+
+    def js_click_for_js_alert(self):
+        self.js_alert_button.wait_for_visible()
+        self.js_alert_button.js_click()
+        self.browser.wait_alert_present()
+
+        alert_text = self.browser.get_alert_text()
+        self.browser.accept_alert()
+        return alert_text
+
+    def js_click_confirm_button(self):
         self.js_confirm_button.wait_for_visible()
-        self.js_confirm_button.click()
-
+        self.js_confirm_button.js_click()
         self.browser.wait_alert_present()
+
         alert_text = self.browser.get_alert_text()
         self.browser.accept_alert()
         return alert_text
 
-    def is_success_text_confirm(self):
-        self.unique_element_text.wait_for_visible()
-        result_text = self.unique_element_text.get_text()
-        return result_text
-
-    def click_for_js_prompt(self):
+    def js_click_prompt_prompt(self, text):
         self.js_promPt_button.wait_for_visible()
-        self.js_promPt_button.click()
-
+        self.js_promPt_button.js_click()
         self.browser.wait_alert_present()
+
         alert_text = self.browser.get_alert_text()
-        self.browser.send_keys_alert(self.TEXT_FAKER)
+        if text is not None:
+            self.browser.send_keys_alert(text)
         self.browser.accept_alert()
         return alert_text
-
-    def is_success_text_prompt(self):
-        self.unique_element_text.wait_for_visible()
-        result_text = self.unique_element_text.get_text()
-        return result_text
