@@ -2,7 +2,7 @@
   "base_urls": {
     "1_basic_auth": "http://admin:admin@localhost:7080/basic_auth",
     "2_java_script_alerts": "https://the-internet.herokuapp.com/javascript_alerts",
-    "4_alerts_context": "https://the-internet.herokuapp.com/context_menu",
+    "4_alerts_context": "http://localhost:7080/context_menu",
     "5_actions": "https://the-internet.herokuapp.com/horizontal_slider",
     "6_hovers": "https://the-internet.herokuapp.com/hovers",
     "7_handlers": "https://the-internet.herokuapp.com/windows",

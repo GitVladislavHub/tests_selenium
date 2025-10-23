@@ -5,6 +5,7 @@ from logger.logger import Logger
 if TYPE_CHECKING:
     from browser.browser import Browser
 
+
 class BasePage:
     UNIQUE_ELEMENT_LOC = None
 
@@ -15,6 +16,4 @@ class BasePage:
 
     def wait_for_open(self):
         Logger.info(f"{self} wait for open")
-        self.unique_element.wait_for_presence()
-
-
+        self.unique_element.wait_for_visible()
