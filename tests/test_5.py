@@ -1,5 +1,3 @@
-import time
-
 from pages.actions_page import ActionsPage
 from config_reader import ConfigReader
 
