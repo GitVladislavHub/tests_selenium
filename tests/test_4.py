@@ -1,5 +1,3 @@
-import time
-
 from faker import Faker
 
 from config_reader import ConfigReader
