@@ -13,6 +13,7 @@ class BrowserFactory:
     def get_driver(
             driver_name: AvailableDriverName = AvailableDriverName.CHROME,
             options: list[str] = None,
+            window_size: dict = None
     ) -> WebDriver:
         if options is None:
             options = []
@@ -28,5 +29,12 @@ class BrowserFactory:
             driver = webdriver.Chrome(options=chrome_options)
         else:
             raise NotImplementedError(f"'{driver_name}' not implemented.")
+
+        if window_size:
+            driver.set_window_size(
+                window_size["width"],
+                window_size["height"]
+            )
+            Logger.info(f"Window size: {window_size}")
 
         return driver

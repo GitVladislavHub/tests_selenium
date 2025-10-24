@@ -1,7 +1,6 @@
 from selenium.webdriver import ActionChains
 
 from elements.button import Button
-from elements.web_element import WebElement
 from pages.base_page import BasePage
 
 
@@ -11,7 +10,7 @@ class ContextClickAlert(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "context_click_alert_page"
-        self.element_context_menu = Button(browser, self.CONTEXT_PAGE_LOC, description="context_click_alert")
+        self.element_context_menu = Button(browser, self.CONTEXT_PAGE_LOC, description="AlertPage -> Click -> Alert_element")
         self.unique_element = self.element_context_menu
 
     def right_click_context_menu(self):

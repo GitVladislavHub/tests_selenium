@@ -9,7 +9,7 @@ fake = Faker()
 def test_alerts_js(browser):
     page_alert_js = AlertPage(browser)
     page_alert_js.browser.get(config.base_urls["2_java_script_alerts"])
-    page_alert_js.open_success_page()
+    page_alert_js.wait_for_open()
     test_text = fake.text(max_nb_chars=10)
 
     actual = page_alert_js.js_click_for_js_alert()

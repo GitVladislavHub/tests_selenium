@@ -2,7 +2,6 @@ from elements.button import Button
 from elements.input import Input
 from elements.label import Label
 from pages.base_page import BasePage
-from logger.logger import Logger
 
 
 class AlertPage(BasePage):
@@ -34,10 +33,7 @@ class AlertPage(BasePage):
                                      description="Alert Page -> Click Alert Button -> JS Alert")
 
         self.text_alert_page = Label(browser, self.LOC_TEXT, description="text")
-
-    def open_success_page(self):
-        Logger.info(f"{self} success open")
-        self.authorization_loc.wait_for_visible()
+        self.unique_element = self.alert_button
 
     def click_for_js_alert(self):
         self.alert_button.wait_for_visible()

@@ -16,4 +16,4 @@ class BasePage:
 
     def wait_for_open(self):
         Logger.info(f"{self} wait for open")
-        self.unique_element.wait_for_visible()
+        self.unique_element.wait_for_presence()
