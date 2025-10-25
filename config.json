@@ -4,7 +4,7 @@
     "2_java_script_alerts": "https://the-internet.herokuapp.com/javascript_alerts",
     "4_alerts_context": "http://localhost:7080/context_menu",
     "5_actions": "http://localhost:7080/horizontal_slider",
-    "6_hovers": "https://the-internet.herokuapp.com/hovers",
+    "6_hovers": "http://localhost:7080/hovers",
     "7_handlers": "https://the-internet.herokuapp.com/windows",
     "8_frames": "https://demoqa.com/frames",
     "9_dynamic_content": "https://the-internet.herokuapp.com/dynamic_content",

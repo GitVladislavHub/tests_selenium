@@ -110,6 +110,15 @@ class Browser:
         Logger.info(f"{self}: switch to frame")
         return self.driver.switch_to.frame(frame.wait_for_presence())
 
+    def go_back(self):
+        Logger.info(f"{self}: navigating back")
+        try:
+            self.driver.back()
+            Logger.info(f"{self}: successfully navigated back")
+            return True
+        except WebDriverException as err:
+            Logger.error(f"{self}: failed to go back - {err}")
+
     def __str__(self) -> str:
         return f"{self.__class__.__name__}_{self._driver.session_id}"
 
