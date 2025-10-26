@@ -7,7 +7,7 @@ config = ConfigReader()
 
 @pytest.fixture(scope="function")
 def browser():
-    driver = BrowserFactory.get_driver( window_size=config.pc_window_size)
+    driver = BrowserFactory.get_driver(window_size=config.pc_window_size)
     browser = Browser(driver)
     yield browser
     browser.quit()

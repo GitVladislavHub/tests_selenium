@@ -37,11 +37,45 @@ class Browser:
             raise
         self.main_handle = self._driver.current_window_handle
 
+    def get_current_window_handle(self) -> str:
+        """Получить handle текущего окна"""
+        return self._driver.current_window_handle
+
+    def get_all_handles(self) -> list:
+        """Получить список всех handles"""
+        return self._driver.window_handles
+
+    def get_current_title_window(self) -> str:
+        """Получить title текущего окна"""
+        try:
+            title = self._driver.title
+            Logger.info(f"{self}: current window title = '{title}'")
+            return title
+        except WebDriverException as err:
+            Logger.error(f"{self}: failed to get window title - {err}")
+            raise
+
     def close(self) -> None:
+        """Закрытие текущего окна/вкладки"""
         Logger.info(f"{self}: close window handle {self.main_handle}")
         self._driver.close()
 
+    def close_tab_by_index(self, index: int) -> None:
+        """Закрытие страницы по индексу"""
+        handles = self._driver.window_handles
+        if index < len(handles):
+            self._driver.switch_to.window(handles[index])
+            self._driver.close()
+            if self._driver.window_handles:
+                self._driver.switch_to.window(self._driver.window_handles[0])
+
+    def close_window_handle(self, handle):
+        """Закрыть вкладку по handle"""
+        self._driver.switch_to.window(handle)
+        self._driver.close()
+
     def quit(self) -> None:
+        """Полный выход из браузера и его закрытие, полное завершение сессии"""
         logging.info(f"{self}: quit")
         try:
             self._driver.quit()
@@ -62,6 +96,7 @@ class Browser:
         self._driver.save_screenshot(filename=filename)
 
     def switch_to_default_window(self) -> None:
+        """Вернуться на базовое(первоначальное) окно"""
         Logger.info(f"{self}: switch to default window")
         try:
             self._driver.switch_to.window(self.main_handle)
@@ -70,6 +105,7 @@ class Browser:
             raise
 
     def switch_to_window(self, title: str) -> None:
+        """Переключиться на любое необходимое окно"""
         Logger.info(f"{self}: switch to window with title '{title}'")
         end_time = time.time() + self.PAGE_LOAD_TIMEOUT
         while True:
@@ -111,6 +147,7 @@ class Browser:
         return self.driver.switch_to.frame(frame.wait_for_presence())
 
     def go_back(self):
+        """Вернуться на предыдущую страницу в истории браузера.(открыта одна вкладка, на несколько вкладок не работает)"""
         Logger.info(f"{self}: navigating back")
         try:
             self.driver.back()
