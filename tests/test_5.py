@@ -15,6 +15,6 @@ def test_slider(browser):
     target_value = round(random.uniform(0, 5) / step) * step
 
     page_slider.action_slider(target_value)
-    actual = page_slider.final_value()
+    actual = page_slider.get_text_final_value()
 
     assert actual == target_value, f"Expected: {target_value}, Actual: {actual}"

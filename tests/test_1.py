@@ -7,10 +7,11 @@ config = ConfigReader()
 def test_main_login_page(browser):
     main_page = MainLoginPage(browser)
     main_page.browser.get(config.base_urls["1_basic_auth"])
-    main_page.login()
+    main_page.wait_for_open()
+    main_page.get_text_login()
 
     expected = "Congratulations! You must have the proper credentials."
-    actual = main_page.login()
+    actual = main_page.get_text_login()
     assert actual == expected, (
         f"Expected: {expected}, "
         f"Actual: {actual}"

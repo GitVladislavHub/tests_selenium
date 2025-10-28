@@ -1,4 +1,3 @@
-import random
 from selenium.webdriver import ActionChains, Keys
 from elements.web_element import WebElement
 from pages.base_page import BasePage
@@ -6,7 +5,7 @@ from pages.base_page import BasePage
 
 class ActionsPage(BasePage):
     SLIDER_LOC = "//input[contains(@type, 'range')]"
-    VALUE_SLIDER_LOC = "//span[@id='range']"
+    VALUE_SLIDER_LOC = "range"
 
     def __init__(self, browser):
         super().__init__(browser)
@@ -22,15 +21,11 @@ class ActionsPage(BasePage):
         ActionChains(self.browser.driver).click(slider_element).perform()
 
         while abs(current_value - target_value) > 0.1:
-            if current_value < target_value:
-                key = Keys.ARROW_RIGHT
-            else:
-                key = Keys.ARROW_LEFT
-
+            key = Keys.ARROW_RIGHT if current_value < target_value else Keys.ARROW_LEFT
             ActionChains(self.browser.driver).send_keys(key).perform()
             current_value = float(self.value_slider_element.get_text())
         return current_value
 
-    def final_value(self):
+    def get_text_final_value(self):
         current_value = float(self.value_slider_element.get_text())
         return current_value

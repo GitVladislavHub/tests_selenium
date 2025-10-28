@@ -11,8 +11,8 @@ class MainLoginPage(BasePage):
         super().__init__(browser)
         self.page_name = "Authorization_page_1"
         self.loc_element = Label(browser, self.AUTH_LOC, description="Main_page -> Alert_Main_page -> Logging")
-
-    def login(self):
+        self.unique_element = self.loc_element
+    def get_text_login(self):
         Logger.info("page opens...")
         self.loc_element.wait_for_presence()
         Logger.info("Successfully open page")
