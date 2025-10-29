@@ -173,6 +173,10 @@ class Browser:
         Logger.info(f"{self}: switch to frame")
         return self.driver.switch_to.frame(frame.wait_for_presence())
 
+    def switch_to_default_content(self):
+        Logger.info(f"{self}: switch to default content")
+        self.driver.switch_to.default_content()
+
     def go_back(self):
         """Вернуться на предыдущую страницу в истории браузера.(открыта одна вкладка, на несколько вкладок не работает)"""
         Logger.info(f"{self}: navigating back")

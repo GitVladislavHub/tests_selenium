@@ -11,8 +11,8 @@ def test_slider(browser):
     page_slider.browser.get(config.base_urls["5_actions"])
     page_slider.wait_for_open()
 
-    step = 0.5
-    target_value = round(random.uniform(0, 5) / step) * step
+    min_val, max_val, step = page_slider.get_slider_bounds()
+    target_value = round(random.uniform(min_val, max_val) / step) * step
 
     page_slider.action_slider(target_value)
     actual = page_slider.get_text_final_value()

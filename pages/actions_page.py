@@ -1,18 +1,19 @@
 from selenium.webdriver import ActionChains, Keys
-from elements.web_element import WebElement
+
+from elements.input import Input
 from pages.base_page import BasePage
 
 
 class ActionsPage(BasePage):
     SLIDER_LOC = "//input[contains(@type, 'range')]"
-    VALUE_SLIDER_LOC = "range"
+    VALUE_SLIDER_LOC = "//span[contains(@id, 'range')]"
 
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "Actions_page"
-        self.slider_element = WebElement(browser, self.SLIDER_LOC, description="ActionPage -> Click_slider_element")
-        self.value_slider_element = WebElement(browser, self.VALUE_SLIDER_LOC,
-                                               description="ActionPage -> Click_slider_element -> Text")
+        self.slider_element = Input(browser, self.SLIDER_LOC, description="ActionPage -> Click_slider_element")
+        self.value_slider_element = Input(browser, self.VALUE_SLIDER_LOC,
+                                          description="ActionPage -> Click_slider_element -> Text")
         self.unique_element = self.slider_element
 
     def action_slider(self, target_value):
@@ -25,6 +26,13 @@ class ActionsPage(BasePage):
             ActionChains(self.browser.driver).send_keys(key).perform()
             current_value = float(self.value_slider_element.get_text())
         return current_value
+
+    def get_slider_bounds(self):
+        slider = self.slider_element.wait_for_visible()
+        min_val = float(slider.get_attribute("min"))
+        max_val = float(slider.get_attribute("max"))
+        step = float(slider.get_attribute("step"))
+        return min_val, max_val, step
 
     def get_text_final_value(self):
         current_value = float(self.value_slider_element.get_text())

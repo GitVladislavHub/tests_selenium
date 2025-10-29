@@ -10,3 +10,11 @@ def test_frames(browser):
     frame_page.wait_for_open()
 
     frame_page.click_buttons_frames()
+
+    actual = frame_page.get_text_iframe_page()
+    expected = "Parent frame"
+    assert actual == expected, f"Expected: {expected}, "f"Actual: {actual}"
+
+    actual = frame_page.get_text_iframe_page_child()
+    expected = "Child Iframe"
+    assert actual == expected, f"Expected: {expected}, "f"Actual: {actual}"

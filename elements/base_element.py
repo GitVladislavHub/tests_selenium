@@ -33,11 +33,17 @@ class BaseElement:
 
         self._wait = WebDriverWait(self.browser.driver, timeout=self.timeout)
 
+        self.element = None
+
     def __str__(self) -> str:
         return f"{self.__class__.__name__}[{self.description}]"
 
     def __repr__(self) -> str:
         return str(self)
+
+    def get_web_element(self):
+        self.element = self.wait_for_presence()
+        return self.element
 
     def _wait_for(self, expected_condition) -> WebElement:
         try:
