@@ -10,8 +10,9 @@ class IframePage(BasePage):
     PAGE_UNIQ_VIS_LOC = "//div[@class='header-text' and text()='Elements']"
     CLICK_ALERTS_LOC = "//div[contains(text(), 'Alerts, Frame & Windows')]"
     NESTED_FRAMES_LOC = "//span[text()='Nested Frames']"
-    NESTED_IFRAME_LOC = "//iframe[@id='frame1']"  # для ParentFrame(для первого фрейма, для Parent)
-    CHILD_FRAME_LOC = "//iframe[contains(@srcdoc, 'Child Iframe')]"
+    NESTED_IFRAME_LOC = "frame1"  # для ParentFrame(для первого фрейма, для Parent)
+    CHILD_FRAME_LOC = "//iframe[contains(@srcdoc, 'Child Iframe')]"  # для ChildFrame(для второго фрейма)
+    BODY_TEXT = "//body"
 
     def __init__(self, browser):
         super().__init__(browser)
@@ -31,19 +32,19 @@ class IframePage(BasePage):
 
     def click_buttons_frames(self):
         self.alerts_frame_window.click()
-        self.nested_frame.wait_for_visible()
         self.nested_frame.click()
 
     def get_text_iframe_page(self):
         self.browser.switch_to_frame(self.parent_iframe_nested)
 
-        parent_text_element = Label(self.browser, "//body", description="Iframe_text -> None")
+        parent_text_element = Label(self.browser, self.BODY_TEXT, description="Iframe_text -> None")
         text = parent_text_element.get_text()
+        self.browser.switch_to_default_content()
         return text
 
     def get_text_iframe_page_child(self):
         self.browser.switch_to_frame(self.child_iframe_nested)
-        parent_text_element = Label(self.browser, "//body", description="Iframe_text -> None")
+        parent_text_element = Label(self.browser, self.BODY_TEXT, description="Iframe_text -> None")
         text = parent_text_element.get_text()
         self.browser.switch_to_default_content()
         return text

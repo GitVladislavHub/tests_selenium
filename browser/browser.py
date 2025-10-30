@@ -55,6 +55,23 @@ class Browser:
             Logger.error(f"{self}: failed to get window title - {err}")
             raise
 
+    def switch_to_new_window_handle(self, original_handle: str = None) -> str:
+        """
+        Переключается на новое окно после действия, которое его открывает.
+        Возвращает handle оригинального окна для последующего возврата.
+        """
+        if original_handle is None:
+            original_handle = self._driver.current_window_handle
+
+        Logger.info(f"{self}: switching to new window from handle '{original_handle}'")
+
+        new_handle = self.get_new_window_handle(original_handle)
+
+        self.switch_to_window_handle(new_handle)
+        Logger.info(f"{self}: switched to new window with handle '{new_handle}'")
+
+        return original_handle
+
     def close(self) -> None:
         """Закрытие текущего окна/вкладки"""
         Logger.info(f"{self}: close window handle {self.main_handle}")
@@ -63,11 +80,17 @@ class Browser:
     def close_tab_by_index(self, index: int) -> None:
         """Закрытие страницы по индексу"""
         handles = self._driver.window_handles
-        if index < len(handles):
-            self._driver.switch_to.window(handles[index])
-            self._driver.close()
-            if self._driver.window_handles:
-                self._driver.switch_to.window(self._driver.window_handles[0])
+        if index >= len(handles):
+            raise IndexError(
+                f"Индекс {index} выходит за пределы количества вкладок ({len(handles)})"
+            )
+
+        if index < 0:
+            raise ValueError(f"Индекс не может быть отрицательным: {index}")
+        self._driver.switch_to.window(handles[index])
+        self._driver.close()
+        if self._driver.window_handles:
+            self._driver.switch_to.window(self._driver.window_handles[0])
 
     def close_tab_by_title(self, title):
         """Закрыть вкладку по title"""
@@ -85,7 +108,7 @@ class Browser:
         self._driver.switch_to.window(handle)
         self._driver.close()
 
-    def new_window_handle(self, original_handle: str) -> str:
+    def get_new_window_handle(self, original_handle: str) -> str:
         """Появляется новое окно и возвращаем его handle"""
         end_time = time.time() + self.DEFAULT_TIMEOUT
         while time.time() < end_time:
@@ -185,7 +208,9 @@ class Browser:
         return True
 
     def refresh_page(self):
+        Logger.info(f"{self}: refreshing page...")
         self._driver.refresh()
+        Logger.info(f"{self}: refreshing page successfully")
 
     def __str__(self) -> str:
         return f"{self.__class__.__name__}_{self._driver.session_id}"

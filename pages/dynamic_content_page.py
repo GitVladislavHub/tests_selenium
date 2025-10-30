@@ -1,10 +1,8 @@
-from selenium.webdriver.common.by import By
-
 from config_reader import ConfigReader
 from elements.label import Label
 from elements.multi_web_element import MultiWebElement
+from logger.logger import Logger
 from pages.base_page import BasePage
-from elements.base_element import BaseElement
 
 config = ConfigReader()
 
@@ -33,8 +31,8 @@ class DynamicContentPage(BasePage):
         while True:
             images_list = self.get_lst_elements_on_content_page()
             if len(images_list) > len(set(images_list)):
-                print("Дубликаты найдены!")
+                Logger.info(f"{self}: Дубликаты не найдены!")
                 return images_list
             else:
-                print("Дубликатов нет, перезагрузка!")
+                Logger.info(f"{self}: Дубликатов пока нет, перезагрузка!")
                 self.browser.refresh_page()
