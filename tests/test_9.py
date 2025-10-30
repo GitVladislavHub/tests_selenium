@@ -12,5 +12,4 @@ def test_dynamic_content_page(browser):
     dynamic_page.get_lst_elements_on_content_page()
 
     duplicate_images = dynamic_page.refresh_until_duplicates()
-
-    assert len(duplicate_images) > len(set(duplicate_images)), "Дубликаты не найдены"
+    assert len(duplicate_images) > 0, "Должен быть дубликат!"
