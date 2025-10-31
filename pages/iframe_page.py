@@ -34,17 +34,3 @@ class IframePage(BasePage):
         self.alerts_frame_window.click()
         self.nested_frame.click()
 
-    def get_text_iframe_page(self):
-        self.browser.switch_to_frame(self.parent_iframe_nested)
-
-        parent_text_element = Label(self.browser, self.BODY_TEXT, description="Iframe_text -> None")
-        text = parent_text_element.get_text()
-        self.browser.switch_to_default_content()
-        return text
-
-    def get_text_iframe_page_child(self):
-        self.browser.switch_to_frame(self.child_iframe_nested)
-        parent_text_element = Label(self.browser, self.BODY_TEXT, description="Iframe_text -> None")
-        text = parent_text_element.get_text()
-        self.browser.switch_to_default_content()
-        return text

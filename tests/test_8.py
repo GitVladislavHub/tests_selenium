@@ -1,5 +1,6 @@
 from config_reader import ConfigReader
 from pages.iframe_page import IframePage
+from pages.nested_frame_page import NestedFramePage
 
 config = ConfigReader()
 
@@ -11,10 +12,19 @@ def test_frames(browser):
 
     frame_page.click_buttons_frames()
 
-    actual = frame_page.get_text_iframe_page()
+    nested_frames = NestedFramePage(browser)
+    nested_frames.wait_for_open()
+
+    browser.switch_to_frame(nested_frames.parent_iframe_nested)
+
+    actual = nested_frames.get_text_iframe_page_parent()
     expected = "Parent frame"
     assert actual == expected, f"Expected: {expected}, "f"Actual: {actual}"
 
-    actual = frame_page.get_text_iframe_page_child()
+    browser.switch_to_frame(nested_frames.child_iframe_nested)
+
+    actual = nested_frames.get_text_iframe_page_child()
     expected = "Child Iframe"
     assert actual == expected, f"Expected: {expected}, "f"Actual: {actual}"
+
+    browser.switch_to_default_content()

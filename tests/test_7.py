@@ -12,7 +12,6 @@ def test_handlers_clicks(browser):
     handlers_page.browser.get(config.base_urls["7_handlers"])
     handlers_page.wait_for_open()
 
-    handlers_page.click_href_button_handler()
     main_window = browser.switch_to_new_window_handle()
 
     new_window_page = NewWindowPage(browser)
