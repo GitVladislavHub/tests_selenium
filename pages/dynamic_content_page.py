@@ -31,7 +31,7 @@ class DynamicContentPage(BasePage):
         while True:
             images_list = self.get_lst_elements_on_content_page()
             if len(images_list) > len(set(images_list)):
-                Logger.info(f"{self}: Дубликаты не найдены!")
+                Logger.info(f"{self}: Дубликаты найдены!")
                 return images_list
             else:
                 Logger.info(f"{self}: Дубликатов пока нет, перезагрузка!")

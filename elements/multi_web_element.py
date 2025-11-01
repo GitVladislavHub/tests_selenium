@@ -25,9 +25,14 @@ class MultiWebElement:
         return self
 
     def __next__(self) -> WebElement:
+        if '{}' in self.formattable_xpath:
+            xpath = self.formattable_xpath.format(self.index)
+        else:
+            xpath = self.formattable_xpath
+
         current_element = WebElement(
             self.browser,
-            self.formattable_xpath.format(self.index),
+            xpath,
             f"{self.description}[{self.index}]",
             timeout=self.timeout,
         )

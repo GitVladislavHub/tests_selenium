@@ -212,6 +212,10 @@ class Browser:
         self._driver.refresh()
         Logger.info(f"{self}: refreshing page successfully")
 
+    def scroll_js_down(self):
+        Logger.info(f"{self}: scrolling js down")
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
     def __str__(self) -> str:
         return f"{self.__class__.__name__}_{self._driver.session_id}"
 
