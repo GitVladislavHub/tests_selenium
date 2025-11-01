@@ -13,13 +13,13 @@ class InfinityScrollPage(BasePage):
         self.page_name = "Infinity Scroll Page"
         self.unique_element = Label(browser, self.UNIQUE_ELEMENT_LOC, description="Unique_element page -> None")
 
-        self.elements_text_loc = MultiWebElement(browser, self.SCROLL_TEXT_LOC, description="Elements_text_loc -> None")
+        self.elements_text_loc = Label(browser, self.SCROLL_TEXT_LOC, description="Elements_text_loc -> None")
 
-    def get_all_scroll_elements(self):
-        new_elements = []
-        for el in self.elements_text_loc:
-            if el.wait_for_visible():
-                new_elements.append(el)
-                if len(new_elements) == 24:
-                    break
-        return new_elements
+        self.elements_text_loc_all = MultiWebElement(browser, self.SCROLL_TEXT_LOC, description="Elements_text_loc -> None")
+
+    def get_all_scroll_elements(self, age=24):
+        lst_elements = []
+        while len(lst_elements) < 24:
+            self.browser.scroll_js_down()
+            if self.elements_text_loc.wait_for_visible():
+                lst_elements.append(self.elements_text_loc)
