@@ -17,4 +17,3 @@ def test_infinity_scroll_down_page(browser):
         infinity_scroll_page.browser.scroll_js_down()
         infinity_scroll_page.get_all_scroll_elements()
         scroll_count += 1
-
