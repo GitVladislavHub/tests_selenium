@@ -1,12 +1,11 @@
 from elements.label import Label
 from elements.multi_web_element import MultiWebElement
-from elements.web_element import WebElement
 from pages.base_page import BasePage
 
 
 class InfinityScrollPage(BasePage):
     UNIQUE_ELEMENT_LOC = "//div//h3[contains(text(), 'Infinite Scroll')]"
-    SCROLL_TEXT_LOC = "//div[contains(@class, 'jscroll-added')]"
+    SCROLL_TEXT_LOC = "//div[contains(@class, 'jscroll-added')][{}]"
 
     def __init__(self, browser):
         super().__init__(browser)
@@ -15,11 +14,21 @@ class InfinityScrollPage(BasePage):
 
         self.elements_text_loc = Label(browser, self.SCROLL_TEXT_LOC, description="Elements_text_loc -> None")
 
-        self.elements_text_loc_all = MultiWebElement(browser, self.SCROLL_TEXT_LOC, description="Elements_text_loc -> None")
+        self.elements_text_loc_all = MultiWebElement(browser, self.SCROLL_TEXT_LOC,
+                                                     description="Elements_text_loc -> None")
 
-    def get_all_scroll_elements(self, age=24):
+
+    #сырое решение, но, вроде работает
+    def get_all_scroll_elements(self, age: int):
         lst_elements = []
-        while len(lst_elements) < 24:
+        index = 1
+        while len(lst_elements) < age:
             self.browser.scroll_js_down()
-            if self.elements_text_loc.wait_for_visible():
-                lst_elements.append(self.elements_text_loc)
+            current_loc = self.SCROLL_TEXT_LOC.format(index)
+            element = Label(self.browser, current_loc)
+
+            if element.wait_for_presence():
+                lst_elements.append(element)
+                index += 1
+            else:
+                element.wait_for_presence()
