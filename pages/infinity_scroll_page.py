@@ -17,18 +17,5 @@ class InfinityScrollPage(BasePage):
         self.elements_text_loc_all = MultiWebElement(browser, self.SCROLL_TEXT_LOC,
                                                      description="Elements_text_loc -> None")
 
-
-    #сырое решение, но, вроде работает
-    def get_all_scroll_elements(self, age: int):
-        lst_elements = []
-        index = 1
-        while len(lst_elements) < age:
-            self.browser.scroll_js_down()
-            current_loc = self.SCROLL_TEXT_LOC.format(index)
-            element = Label(self.browser, current_loc)
-
-            if element.wait_for_presence():
-                lst_elements.append(element)
-                index += 1
-            else:
-                element.wait_for_presence()
+    def get_element_by_index(self, index: int) -> Label:
+        return Label(self.browser, self.SCROLL_TEXT_LOC.format(index))
