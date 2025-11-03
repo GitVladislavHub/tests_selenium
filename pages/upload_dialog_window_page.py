@@ -19,9 +19,10 @@ class UploadDialogWindowPage(BasePage):
     def upload_file_dialog_window(self):
         self.input_file_upload.click()
         time.sleep(2)
-        pyautogui.write("G:\\Projects\\tests_selenium\\pages\\my_image.png", interval=0.05)
+        pyautogui.write(r"G:\Projects\tests_selenium\pages\my_image.png", interval=0.05)
         time.sleep(1)
         pyautogui.press("enter")
 
     def get_text_upload(self):
+        self.check_text_loc.wait_for_visible()
         return self.check_text_loc.get_text()
