@@ -38,3 +38,11 @@ class Input(BaseElement):
         element = self.wait_for_presence()
         Logger.info(f"{self}: js_send_keys = '{keys}'")
         self.browser.execute_script("arguments[0].value = arguments[1]", element, keys)
+
+    def send_keys_upload_file(self, keys):
+        element = self.wait_for_clickable()
+        if element.get_attribute("type") == "file":
+            element.send_keys(keys)
+        else:
+            self.clear()
+            element.send_keys(keys)
