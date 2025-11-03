@@ -1,11 +1,12 @@
+from bs4 import BeautifulSoup
 from elements.label import Label
-from elements.multi_web_element import MultiWebElement
 from pages.base_page import BasePage
 
 
 class InfinityScrollPage(BasePage):
     UNIQUE_ELEMENT_LOC = "//div//h3[contains(text(), 'Infinite Scroll')]"
-    SCROLL_TEXT_LOC = "//div[contains(@class, 'jscroll-added')][{}]"
+    SCROLL_TEXT_LOC = "(//div[contains(@class, 'jscroll-added')])[last()]"
+    PARAGRAPH_LOC = "//div[contains(@class, 'jscroll-added')]"
 
     def __init__(self, browser):
         super().__init__(browser)
@@ -14,8 +15,23 @@ class InfinityScrollPage(BasePage):
 
         self.elements_text_loc = Label(browser, self.SCROLL_TEXT_LOC, description="Elements_text_loc -> None")
 
-        self.elements_text_loc_all = MultiWebElement(browser, self.SCROLL_TEXT_LOC,
-                                                     description="Elements_text_loc -> None")
+        self.paragraphs_loc = Label(browser, self.PARAGRAPH_LOC, description="Elements_text_loc -> None")
 
-    def get_element_by_index(self, index: int) -> Label:
-        return Label(self.browser, self.SCROLL_TEXT_LOC.format(index))
+    def scroll_element(self, age):
+        lst_paragraphs = []
+        while True:
+            self.elements_text_loc.wait_for_presence()
+            self.elements_text_loc.scroll_js_down()
+
+            soup = BeautifulSoup(self.browser.driver.page_source, "html.parser")
+            paragraphs = soup.find_all("div", class_="jscroll-added")
+
+            for p in paragraphs:
+                txt = p.get_text(strip=True)
+                if txt and txt not in lst_paragraphs:
+                    lst_paragraphs.append(txt)
+
+            if len(lst_paragraphs) >= age:
+                break
+
+        return lst_paragraphs
