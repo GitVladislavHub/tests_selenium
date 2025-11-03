@@ -10,6 +10,7 @@ def test_upload_dialog_window(browser):
     upload_dialog.wait_for_open()
 
     upload_dialog.upload_file_dialog_window()
-    actual = upload_dialog.check_text()
+
+    actual = upload_dialog.get_text_upload()
     expected = "\u2714"
     assert actual == expected
