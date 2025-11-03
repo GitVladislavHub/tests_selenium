@@ -29,3 +29,5 @@ class UploadImagePage(BasePage):
         self.button_upload.send_keys_upload_file(file_path)
         self.button_image.click()
         self.text_uploaded_loc.wait_for_visible()
+        text = self.text_uploaded_loc.get_text()
+        return text

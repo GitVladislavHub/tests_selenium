@@ -11,4 +11,6 @@ def test_upload_image(browser):
     upload_image.browser.get(config.base_urls["11_upload"])
     upload_image.wait_for_open()
 
-    upload_image.upload_image()
+    actual = upload_image.upload_image()
+    expected = "File Uploaded!"
+    assert actual == expected, f"Expected: {expected}, Actual: {actual}"
