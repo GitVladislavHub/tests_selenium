@@ -24,5 +24,4 @@ class UploadDialogWindowPage(BasePage):
         pyautogui.press("enter")
 
     def get_text_upload(self):
-        self.check_text_loc.wait_for_visible()
         return self.check_text_loc.get_text()
