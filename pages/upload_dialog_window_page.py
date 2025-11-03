@@ -17,7 +17,7 @@ class UploadDialogWindowPage(BasePage):
         self.page_name = "UploadDialogWindowPage"
         self.unique_element = Label(browser, self.UNIQUE_LOC, description="Unique element button -> None")
         self.input_file_upload = Button(browser, self.INPUT_FILE_LOC, description="Click Button -> Dialog window")
-        self.check_text_loc = Label(browser, self.CHECK_FILE_LOC, description="Click Button -> Dialog window")
+        self.check_text_loc = Label(browser, self.CHECK_FILE_LOC, description="Get text -> Text")
 
     def upload_file_dialog_window(self):
         self.input_file_upload.click()
@@ -25,6 +25,7 @@ class UploadDialogWindowPage(BasePage):
 
     def get_text_upload(self):
         return self.check_text_loc.get_text()
+
 
     # def upload_file_dialog_window(self):
     #     self.input_file_upload.click()

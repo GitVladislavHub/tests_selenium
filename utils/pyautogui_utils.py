@@ -16,4 +16,4 @@ class PyautoguiUtils:
         logging.debug("Press enter to continue")
         pyautogui.hotkey('enter')
 
-        time.sleep(3)
+        time.sleep(4)
