@@ -6,7 +6,6 @@ from pages.base_page import BasePage
 class InfinityScrollPage(BasePage):
     UNIQUE_ELEMENT_LOC = "//div//h3[contains(text(), 'Infinite Scroll')]"
     SCROLL_TEXT_LOC = "(//div[contains(@class, 'jscroll-added')])[last()]"
-    PARAGRAPH_LOC = "//div[contains(@class, 'jscroll-added')]"
 
     def __init__(self, browser):
         super().__init__(browser)
@@ -14,8 +13,6 @@ class InfinityScrollPage(BasePage):
         self.unique_element = Label(browser, self.UNIQUE_ELEMENT_LOC, description="Unique_element page -> None")
 
         self.elements_text_loc = Label(browser, self.SCROLL_TEXT_LOC, description="Elements_text_loc -> None")
-
-        self.paragraphs_loc = Label(browser, self.PARAGRAPH_LOC, description="Elements_text_loc -> None")
 
     def scroll_element(self, age):
         lst_paragraphs = []
