@@ -11,6 +11,6 @@ def test_upload_dialog_window(browser):
 
     upload_dialog.upload_file_dialog_window()
 
-    # actual = upload_dialog.get_text_upload()
-    # expected = chr(0x2714)
-    # assert actual == expected
+    actual = upload_dialog.get_text_upload()
+    expected = chr(0x2714)
+    assert actual == expected
