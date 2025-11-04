@@ -1,5 +1,3 @@
-import time
-
 from config_reader import ConfigReader
 from pages.infinity_scroll_page import InfinityScrollPage
 

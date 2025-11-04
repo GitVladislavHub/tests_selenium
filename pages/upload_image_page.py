@@ -1,9 +1,6 @@
-import time
-
 from elements.input import Input
 from elements.label import Label
 from pages.base_page import BasePage
-import os
 
 
 class UploadImagePage(BasePage):
@@ -24,10 +21,8 @@ class UploadImagePage(BasePage):
         self.button_image = Input(browser, self.BUTTON_IMAGE_LOC, description="Upload file -> None")
         self.text_uploaded_loc = Label(browser, self.TEXT_UPLOADED_LOC, description="Upload file -> None")
 
-    def upload_image(self):
-        file_path = os.path.abspath("resources/my_image.png")
+    def upload_image(self, file_path):
         self.button_upload.send_keys_upload_file(file_path)
         self.button_image.click()
         self.text_uploaded_loc.wait_for_visible()
-        text = self.text_uploaded_loc.get_text()
-        return text
+        return self.text_uploaded_loc.get_text()

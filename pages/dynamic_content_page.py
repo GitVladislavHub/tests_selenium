@@ -24,7 +24,7 @@ class DynamicContentPage(BasePage):
         for image_element in all_images:
             src = image_element.get_attribute("src")
             images_list.append(src)
-            print(images_list)
+            Logger.info(f" Все элементы: {image_element}")
         return images_list
 
     def refresh_until_duplicates(self):

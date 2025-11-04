@@ -27,7 +27,6 @@ class InfinityScrollPage(BasePage):
                 txt = p.get_text(strip=True)
                 if txt and txt not in lst_paragraphs:
                     lst_paragraphs.append(txt)
-
             if len(lst_paragraphs) >= age:
                 break
 

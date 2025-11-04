@@ -39,5 +39,5 @@ class HoversPage(BasePage):
 
     def click_view_profile(self, browser, user_index):
         href_locator = self.HOVER_HREF_LOC.format(index=user_index)
-        hover_href_element = Button(browser, href_locator, description="Hover_href_1 -> None")
+        hover_href_element = Button(browser, href_locator, description="Hover_href_1 -> User profile page")
         hover_href_element.click()

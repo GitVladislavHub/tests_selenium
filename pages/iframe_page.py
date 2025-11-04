@@ -10,8 +10,7 @@ class IframePage(BasePage):
     PAGE_UNIQ_VIS_LOC = "//div[@class='header-text' and text()='Elements']"
     CLICK_ALERTS_LOC = "//div[contains(text(), 'Alerts, Frame & Windows')]"
     NESTED_FRAMES_LOC = "//span[text()='Nested Frames']"
-    NESTED_IFRAME_LOC = "frame1"  # для ParentFrame(для первого фрейма, для Parent)
-    CHILD_FRAME_LOC = "//iframe[contains(@srcdoc, 'Child Iframe')]"  # для ChildFrame(для второго фрейма)
+
     BODY_TEXT = "//body"
 
     def __init__(self, browser):
@@ -21,10 +20,6 @@ class IframePage(BasePage):
                                           description="Iframe Page -> click Button Alerts, Frame & Windows -> Buttons")
         self.nested_frame = Button(browser, self.NESTED_FRAMES_LOC,
                                    description="click button 'Nested Frames' -> Form 'Nested Frames'")
-        self.parent_iframe_nested = Label(browser, self.NESTED_IFRAME_LOC,
-                                          description="Nested Iframe -> None")
-        self.child_iframe_nested = Label(browser, self.CHILD_FRAME_LOC,
-                                         description="Nested Iframe -> None")
 
         self.alert_frame = Label(browser, self.PAGE_UNIQ_VIS_LOC,
                                  description="Iframe Page -> click Button 'Alerts, Frame & Windows'")
@@ -33,4 +28,3 @@ class IframePage(BasePage):
     def click_buttons_frames(self):
         self.alerts_frame_window.click()
         self.nested_frame.click()
-

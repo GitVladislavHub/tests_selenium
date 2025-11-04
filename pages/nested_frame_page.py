@@ -4,7 +4,7 @@ from pages.base_page import BasePage
 
 
 class NestedFramePage(BasePage):
-    PAGE_UNIQ_VIS_LOC = "//div[@class='header-text' and text()='Elements']"
+    PAGE_UNIQ_VIS_LOC = "//div[contains(text(), 'Elements')]"
     PARENT_FRAME_LOC = "frame1"  # для ParentFrame(для первого фрейма, для Parent)
     CHILD_FRAME_LOC = "//iframe[contains(@srcdoc, 'Child Iframe')]"  # для ChildFrame(для второго фрейма)
     BODY_TEXT = "//body"
@@ -30,4 +30,3 @@ class NestedFramePage(BasePage):
         parent_text_element = Label(self.browser, self.BODY_TEXT, description="Iframe_text -> None")
         text = parent_text_element.get_text()
         return text
-

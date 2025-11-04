@@ -208,9 +208,7 @@ class Browser:
         return True
 
     def refresh_page(self):
-        Logger.info(f"{self}: refreshing page...")
         self._driver.refresh()
-        Logger.info(f"{self}: refreshing page successfully")
 
     def __str__(self) -> str:
         return f"{self.__class__.__name__}_{self._driver.session_id}"

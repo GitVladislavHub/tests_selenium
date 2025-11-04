@@ -1,5 +1,3 @@
-import time
-
 from config_reader import ConfigReader
 from pages.handlers_page import HandlersPage
 from pages.new_window_page import NewWindowPage
@@ -29,8 +27,8 @@ def test_handlers_clicks(browser):
 
     handlers_page.click_href_button_handler()
 
-    new_window_page.wait_for_open()
     browser.switch_to_new_window_handle()
+    new_window_page.wait_for_open()
 
     actual = new_window_page.get_text_page()
     expected = "New Window"

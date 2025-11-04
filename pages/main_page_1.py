@@ -1,5 +1,4 @@
 from elements.label import Label
-from logger.logger import Logger
 
 from pages.base_page import BasePage
 
@@ -14,8 +13,6 @@ class MainLoginPage(BasePage):
         self.unique_element = self.loc_element
 
     def get_text_login(self):
-        Logger.info("Get text alert main page")
         self.loc_element.wait_for_presence()
         text = self.loc_element.get_text()
-        Logger.info("Successfully get text alert main page")
         return text

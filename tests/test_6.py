@@ -21,7 +21,7 @@ def test_hover(browser):
         view_profile_page.wait_for_open()
         actual = view_profile_page.get_text_view_profile()
         expected = "Sinatra doesn’t know this ditty."
-        assert actual == expected
+        assert actual == expected, f"Текст не совпадает! Ожидалось: '{expected}', получено: '{actual}'"
 
         if user_index < 3:
             browser.go_back()
