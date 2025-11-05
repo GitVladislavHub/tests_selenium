@@ -6,8 +6,6 @@ from pages.base_page import BasePage
 from utils.pyautogui_utils import PyautoguiUtils
 
 
-
-
 class UploadDialogWindowPage(BasePage):
     UNIQUE_LOC = "file-submit"
     INPUT_FILE_LOC = "drag-drop-upload"

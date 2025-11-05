@@ -6,6 +6,7 @@ from pages.alert_page import AlertPage
 config = ConfigReader()
 fake = Faker()
 
+
 def test_alerts_js(browser):
     page_alert_js = AlertPage(browser)
     page_alert_js.browser.get(config.base_urls["2_java_script_alerts"])
