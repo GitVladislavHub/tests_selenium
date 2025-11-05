@@ -29,5 +29,4 @@ class InfinityScrollPage(BasePage):
                     lst_paragraphs.append(txt)
             if len(lst_paragraphs) >= age:
                 break
-
-        return lst_paragraphs
+        return lst_paragraphs[:age]
