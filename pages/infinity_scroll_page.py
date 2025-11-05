@@ -18,7 +18,7 @@ class InfinityScrollPage(BasePage):
         lst_paragraphs = []
         while True:
             self.elements_text_loc.wait_for_presence()
-            self.elements_text_loc.scroll_into_view()
+            self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
             soup = BeautifulSoup(self.browser.driver.page_source, "html.parser")
             paragraphs = soup.find_all("div", class_="jscroll-added")

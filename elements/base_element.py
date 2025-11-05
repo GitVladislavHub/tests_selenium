@@ -41,10 +41,6 @@ class BaseElement:
     def __repr__(self) -> str:
         return str(self)
 
-    def get_web_element(self):
-        self.element = self.wait_for_presence()
-        return self.element
-
     def _wait_for(self, expected_condition) -> WebElement:
         try:
             Logger.info(f"{self}: wait for {expected_condition.__name__}")
@@ -113,7 +109,3 @@ class BaseElement:
             raise
         Logger.info(f"{self}: attribute '{name}' = '{value}'")
         return value
-
-    def scroll_into_view(self):
-        Logger.info(f"{self}: scrolling js down")
-        self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
