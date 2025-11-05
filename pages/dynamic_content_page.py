@@ -9,7 +9,7 @@ config = ConfigReader()
 
 class DynamicContentPage(BasePage):
     REFRESH_IMAGE_LOC = "(//img[contains(@src, 'avatars')])[{}]"
-    DYNAMIC_CONTENT_LOC_2 = "(//div[contains(@class, 'large-2 columns')])[1]"
+    DYNAMIC_CONTENT_LOC_2 = "(//div[contains(@class, 'large-2') and contains(@class, 'columns')])[1]"
 
     def __init__(self, browser):
         super().__init__(browser)

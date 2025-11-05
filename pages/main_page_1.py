@@ -9,10 +9,10 @@ class MainLoginPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.page_name = "Authorization_page_1"
-        self.loc_element = Label(browser, self.AUTH_LOC, description="Main_page -> Alert_Main_page -> Logging")
-        self.unique_element = self.loc_element
+        self.text_element_loc = Label(browser, self.AUTH_LOC, description="Main_page -> Text")
+        self.unique_element = self.text_element_loc
 
     def get_text_login(self):
-        self.loc_element.wait_for_presence()
-        text = self.loc_element.get_text()
+        self.text_element_loc.wait_for_presence()
+        text = self.text_element_loc.get_text()
         return text

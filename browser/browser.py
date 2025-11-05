@@ -205,10 +205,11 @@ class Browser:
         Logger.info(f"{self}: navigating back")
         self.driver.back()
         Logger.info(f"{self}: successfully navigated back")
-        return True
 
     def refresh_page(self):
+        Logger.info(f"{self}: refreshing page...")
         self._driver.refresh()
+        Logger.info(f"{self}: successfully refresh page")
 
     def __str__(self) -> str:
         return f"{self.__class__.__name__}_{self._driver.session_id}"

@@ -7,9 +7,9 @@ config = ConfigReader()
 
 
 class IframePage(BasePage):
-    PAGE_UNIQ_VIS_LOC = "//div[@class='header-text' and text()='Elements']"
+    PAGE_UNIQ_VIS_LOC = "//div[contains(text(), 'Elements')]"
     CLICK_ALERTS_LOC = "//div[contains(text(), 'Alerts, Frame & Windows')]"
-    NESTED_FRAMES_LOC = "//span[text()='Nested Frames']"
+    NESTED_FRAMES_LOC = "//span[contains(text(), 'Nested Frames')]"
 
     BODY_TEXT = "//body"
 

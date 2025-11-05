@@ -5,13 +5,13 @@ from pages.base_page import BasePage
 
 from utils.pyautogui_utils import PyautoguiUtils
 
-upload_file_p = PyautoguiUtils()
+
 
 
 class UploadDialogWindowPage(BasePage):
     UNIQUE_LOC = "file-submit"
     INPUT_FILE_LOC = "drag-drop-upload"
-    CHECK_FILE_LOC = "//*[@id='drag-drop-upload']//div[contains(@class, 'dz-success-mark')]/span"
+    CHECK_FILE_LOC = "//*[@id='drag-drop-upload']//div[contains(@class, 'dz-success-mark')]//span"
 
     def __init__(self, browser):
         super().__init__(browser)
@@ -23,7 +23,7 @@ class UploadDialogWindowPage(BasePage):
     def upload_file_dialog_window(self, file_path):
         self.input_file_upload.click()
         absolute_path = os.path.abspath(file_path)
-        upload_file_p.upload_file(absolute_path)
+        PyautoguiUtils.upload_file(absolute_path)
 
     def get_text_upload(self):
         return self.check_text_loc.get_text()

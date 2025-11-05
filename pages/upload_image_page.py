@@ -22,7 +22,7 @@ class UploadImagePage(BasePage):
         self.text_uploaded_loc = Label(browser, self.TEXT_UPLOADED_LOC, description="Upload file -> None")
 
     def upload_image(self, file_path):
-        self.button_upload.send_keys_upload_file(file_path)
+        self.button_upload.send_keys(file_path)
         self.button_image.click()
         self.text_uploaded_loc.wait_for_visible()
         return self.text_uploaded_loc.get_text()
