@@ -109,3 +109,7 @@ class BaseElement:
             raise
         Logger.info(f"{self}: attribute '{name}' = '{value}'")
         return value
+
+    def scroll_to(self):
+        element = self.wait_for_presence()
+        self.browser.execute_script("arguments[0].scrollIntoView();", element)
