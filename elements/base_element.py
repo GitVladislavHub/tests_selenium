@@ -114,6 +114,6 @@ class BaseElement:
         Logger.info(f"{self}: attribute '{name}' = '{value}'")
         return value
 
-    def scroll_js_down(self):
+    def scroll_into_view(self):
         Logger.info(f"{self}: scrolling js down")
-        self.browser.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
