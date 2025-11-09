@@ -1,0 +1,17 @@
+from config_reader import ConfigReader
+from pages.upload_dialog_window_page import UploadDialogWindowPage
+
+config = ConfigReader()
+
+
+def test_upload_dialog_window(browser):
+    upload_dialog = UploadDialogWindowPage(browser)
+    upload_dialog.browser.get(config.base_urls["11_upload"])
+    upload_dialog.wait_for_open()
+
+    file_path = "resources/my_image.png"
+    upload_dialog.upload_file_dialog_window(file_path)
+
+    actual = upload_dialog.get_text_upload()
+    expected = chr(0x2714)
+    assert actual == expected, f"Ожидался символ ✓ (U+2714), но получили: '{actual}'"

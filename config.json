@@ -1,0 +1,21 @@
+{
+  "base_urls": {
+    "1_basic_auth": "http://admin:admin@localhost:7080/basic_auth",
+    "2_java_script_alerts": "https://the-internet.herokuapp.com/javascript_alerts",
+    "4_alerts_context": "http://localhost:7080/context_menu",
+    "5_actions": "http://localhost:7080/horizontal_slider",
+    "6_hovers": "http://localhost:7080/hovers",
+    "7_handlers": "http://localhost:7080/windows",
+    "8_frames": "https://demoqa.com/automation-practice-form",
+    "9_dynamic_content": "http://localhost:7080/dynamic_content",
+    "10_infinity_scroll": "http://localhost:7080/infinite_scroll",
+    "11_upload": "https://the-internet.herokuapp.com/upload"
+  },
+  "timeouts": {
+    "wait_default": 10
+  },
+  "pc_window_size": {
+    "width": 1920,
+    "height": 1080
+  }
+}
